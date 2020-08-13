@@ -8,11 +8,13 @@ import { QuestionComponent } from './components/question/question.component';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
+import { TestComponent } from './components/test/test.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    QuestionComponent
+    QuestionComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

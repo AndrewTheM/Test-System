@@ -1,0 +1,10 @@
+<h1>Test "{{ testModel.name }}"</h1>
+<ol>
+    <ng-container *ngFor="let question of testModel.questions">
+        <mat-card>
+            <li>
+                <app-question [questionModel]="question"></app-question>
+            </li>
+        </mat-card>
+    </ng-container>
+</ol>

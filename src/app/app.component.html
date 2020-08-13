@@ -1,11 +1,18 @@
-<h1>Test</h1>
-<ol>
-    <ng-container *ngFor="let question of questions">
-        <mat-card>
-            <li>
-                <app-question [model]="question"></app-question>
-            </li>
-        </mat-card>
-    </ng-container>
-</ol>
-<router-outlet></router-outlet>
+<div id="wrapper">
+    <header>
+        <h1>Test System</h1>
+        <nav>
+            <ul>
+                <li><a class="nav-btn" href="#">Tests</a></li>
+                <li><a class="nav-btn" href="#">Contacts</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <app-test [testModel]="test"></app-test>
+        <router-outlet></router-outlet>
+    </main>
+    <footer>
+
+    </footer>
+</div>

@@ -4,7 +4,8 @@ html, body {
 
 body {
     margin: 0;
+    padding: 0 100px;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background: url(assets/bg.jpg) no-repeat;
-    background-size: cover;
+    min-width: 700px;
+    background: rgba(252, 222, 104, 0.363);
 }

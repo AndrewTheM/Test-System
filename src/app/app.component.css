@@ -1,18 +1,51 @@
-h1 {
-    margin: 15px;
-    font-weight: 600;
-    color: rgb(248, 248, 248);
-    font-size: 24pt;
+#wrapper {
+    background: url(../assets/bg.jpg) no-repeat fixed;
+    background-size: cover;
 }
 
-mat-card {
-    margin: 15px;
-    padding: 20px 50px;
-    background-color: rgba(35, 46, 145, 0.5);
+header h1 {
+    color: white;
+    font-size: 36pt;
+    font-weight: bolder;
+    padding: 50px 70px;
 }
 
-ol {
+header, footer {
+    background: rgba(18, 71, 216, 0.5);
+}
+
+footer {
+    height: 150px;
+}
+
+nav {
+    background: rgb(50, 30, 226);
+}
+
+main {
+    padding: 30px 10px;
+}
+
+header nav ul {
+    margin: 0;
     padding: 0;
+    display: flex;
+    list-style-type: none;
+}
+
+.nav-btn {
+    display: block;
+    text-align: center;
+    width: 130px;
+    padding: 15px 0;
+
+    font-size: 16pt;
     font-weight: 500;
-    font-size: 14pt;
+    text-decoration: none;
+    color: white;
+}
+
+.nav-btn:hover, .nav-btn:active {
+    color: rgb(50, 30, 226);
+    background: white;
 }
