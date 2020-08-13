@@ -1,0 +1,11 @@
+<h1>Test</h1>
+<ol>
+    <ng-container *ngFor="let question of questions">
+        <mat-card>
+            <li>
+                <app-question [model]="question"></app-question>
+            </li>
+        </mat-card>
+    </ng-container>
+</ol>
+<router-outlet></router-outlet>
