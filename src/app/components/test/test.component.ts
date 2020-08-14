@@ -34,7 +34,7 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.testModel = this.tests[+params.get('testId')]
+      this.testModel = this.tests[+params.get('id')]
     });
   }
 
