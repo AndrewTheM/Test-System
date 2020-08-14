@@ -1,17 +1,13 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Question } from '../../models/question.model';
-import { Test } from '../../models/test.model';
-import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { Test } from 'src/app/models/test.model';
+import { Question } from 'src/app/models/question.model';
 
 @Component({
-  selector: 'app-test',
-  templateUrl: './test.component.html',
-  styleUrls: ['./test.component.css']
+  selector: 'app-tests-page',
+  templateUrl: './tests-page.component.html',
+  styleUrls: ['./tests-page.component.css']
 })
-export class TestComponent implements OnInit {
-  //@Input()
-  testModel: Test;
+export class TestsPageComponent implements OnInit {
 
   tests: Test[] = [
     new Test("Ugandan Homosexuals", [
@@ -28,14 +24,9 @@ export class TestComponent implements OnInit {
     ]),
   ];
 
-  constructor(private route: ActivatedRoute) {
-    
-  }
+  constructor() { }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.testModel = this.tests[+params.get('testId')]
-    });
   }
 
 }

@@ -1,15 +1,15 @@
 <div id="wrapper">
     <header>
-        <h1>Test System</h1>
+        <h1><a routerLink="/" routerLinkActive="false">Test System</a></h1>
         <nav>
             <ul>
-                <li><a class="nav-btn" href="#">Tests</a></li>
-                <li><a class="nav-btn" href="#">Contacts</a></li>
+                <li><a class="nav-btn" routerLink="/tests" [state]="">Tests</a></li>
+                <li><a class="nav-btn" routerLink="/contacts">Contacts</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <app-test [testModel]="test"></app-test>
+        <!-- <app-test [testModel]="test"></app-test> -->
         <router-outlet></router-outlet>
     </main>
     <footer>
