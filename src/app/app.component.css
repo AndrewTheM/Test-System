@@ -28,6 +28,7 @@ nav {
 
 main {
     padding: 30px;
+    min-height: 500px;
 }
 
 header nav ul {

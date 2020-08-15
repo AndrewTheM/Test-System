@@ -1,3 +1,12 @@
-<ng-container *ngFor="let test of tests; let testId = index">
-    <a [routerLink]="['/tests', testId]">{{ test.name }} ({{ test.questions.length }} questions)</a>
-</ng-container>
+<mat-chip-list>
+    <ng-container *ngFor="let test of tests; let testId = index">
+        <mat-chip selected (click)="openTest(testId)">
+            <!-- <a [routerLink]="['/tests', testId]"> -->
+            <div>
+                {{ test.name }}
+                <br>
+                ({{ test.questions.length }} questions)
+            </div>
+        </mat-chip>
+    </ng-container>
+</mat-chip-list>

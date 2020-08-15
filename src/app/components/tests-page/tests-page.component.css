@@ -1,7 +1,13 @@
-a {
-    display: block;
-    text-decoration: none;
+mat-chip {
+    width: 300px;
+    height: 100px;
+    background-color: rgba(35, 46, 145, 0.5);
+    text-align: center;
     color: white;
     font-size: 14pt;
-    margin-top: 5px;
+    cursor: pointer;
+}
+
+div {
+    width: 100%;
 }
