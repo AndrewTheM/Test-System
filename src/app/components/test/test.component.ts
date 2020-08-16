@@ -22,7 +22,7 @@ export class TestComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.testModel = this.tests[+params.get('id')]
+      this.testModel = this.tests.find(t => t.id == +params.get('id'));
     });
   }
 

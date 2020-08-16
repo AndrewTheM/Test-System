@@ -1,6 +1,6 @@
 <mat-chip-list>
-    <ng-container *ngFor="let test of tests; let testId = index">
-        <mat-chip selected (click)="openTest(testId)">
+    <ng-container *ngFor="let test of tests">
+        <mat-chip selected (click)="openTest(test.id)">
             <div class="no-select">
                 {{ test.name }}
                 <br>

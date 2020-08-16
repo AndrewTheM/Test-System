@@ -13,10 +13,11 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { TestsPageComponent, 
-  HomePageComponent,
-  ContactsPageComponent,
-  NotFoundComponent,
-  TestComponent } from './components';
+          HomePageComponent,
+          ContactsPageComponent,
+          NotFoundComponent,
+          TestComponent,
+          LoginComponent } from './components';
   
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { TestsPageComponent,
     TestsPageComponent,
     HomePageComponent,
     ContactsPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
