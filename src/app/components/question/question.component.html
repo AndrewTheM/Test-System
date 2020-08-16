@@ -2,11 +2,18 @@
 <mat-radio-group>
     <ol type="a">
         <ng-container *ngFor="let option of questionModel.options; let i = index">
-                <mat-radio-button value="{{ i }}">
+                <mat-radio-button *ngIf="!questionModel.multipleChoicesEnabled; else checkbox" value="{{ i }}">
                     <li>
                         {{ option }}
                     </li>
                 </mat-radio-button>
+                <ng-template #checkbox>
+                    <mat-checkbox value="{{ i }}">
+                        <li>
+                            {{ option }}
+                        </li>
+                    </mat-checkbox>
+                </ng-template>
         </ng-container>
     </ol>
 </mat-radio-group>

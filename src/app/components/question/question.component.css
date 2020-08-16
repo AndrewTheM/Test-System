@@ -1,6 +1,7 @@
-mat-radio-button {
+mat-radio-button, mat-checkbox {
     display: block;
     margin-top: 5px;
+    width: 0;
 }
 
 ol {
