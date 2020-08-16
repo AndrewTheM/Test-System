@@ -1,1 +1,12 @@
-<p>login works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="submitCredentials()">
+    <mat-form-field appearance="outline">
+        <mat-label>Username</mat-label> 
+        <input matInput type="text">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label> 
+        <input matInput type="{{ hidePassword ? 'password' : 'text' }}">
+        <mat-icon (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+    </mat-form-field>
+    <button mat-raised-button color="primary">Log In</button>
+</form>

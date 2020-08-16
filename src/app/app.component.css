@@ -1,6 +1,5 @@
 #wrapper {
-    background: url(../assets/bg.jpg) no-repeat fixed;
-    background-size: cover;
+    background: rgb(250, 250, 250);
 }
 
 header h1 {
@@ -10,7 +9,7 @@ header h1 {
 }
 
 header, footer {
-    background: rgba(18, 71, 216, 0.5);
+    background: rgb(19, 8, 82);
 }
 
 footer {
@@ -18,11 +17,11 @@ footer {
 }
 
 nav {
-    background: rgb(50, 30, 226);
+    background: rgb(9, 4, 56);
 }
 
 main {
-    padding: 30px;
+    padding: 30px 15%; 
     min-height: 500px;
 }
 
@@ -44,6 +43,6 @@ header nav ul {
 }
 
 .nav-btn:hover, .nav-btn:active {
-    color: rgb(50, 30, 226);
-    background: white;
+    color: rgb(9, 4, 56);
+    background: rgb(250, 250, 250);
 }
