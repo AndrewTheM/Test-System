@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Test } from 'src/app/models/test.model';
-import { tests } from '../tests';
 import { Router } from '@angular/router';
+
+import { Test } from '../../models';
+import { tests } from '../tests';
 
 @Component({
   selector: 'app-tests-page',

@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,12 +12,12 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-import { TestComponent } from './components/test/test.component';
-import { TestsPageComponent } from './components/tests-page/tests-page.component';
-import { HomePageComponent } from './components/home-page/home-page.component';
-import { ContactsPageComponent } from './components/contacts-page/contacts-page.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-
+import { TestsPageComponent, 
+  HomePageComponent,
+  ContactsPageComponent,
+  NotFoundComponent,
+  TestComponent } from './components';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
     MatRadioModule,
     MatCardModule,
     MatChipsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

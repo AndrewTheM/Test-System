@@ -1,4 +1,4 @@
-import { Question } from "./question.model";
+import { Question } from "./";
 
 export class Test {
     id: number;

@@ -1,5 +1,4 @@
-import { Test } from '../models/test.model';
-import { Question } from '../models/question.model';
+import { Test, Question } from '../models';
 
 export const tests: Test[] = [
     new Test(25431, "Ugandan Homosexuals", [

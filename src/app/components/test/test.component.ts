@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Test } from '../../models/test.model';
 import { ActivatedRoute } from '@angular/router';
+
+import { Test } from '../../models';
 import { tests } from '../tests';
 
 @Component({
