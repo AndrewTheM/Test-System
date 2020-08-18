@@ -5,3 +5,5 @@ export * from './question/question.component';
 export * from './test/test.component';
 export * from './tests-page/tests-page.component';
 export * from './login/login.component';
+export * from './register/register.component';
+export * from './account-page/account-page.component';

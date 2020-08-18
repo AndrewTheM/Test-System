@@ -1,0 +1,67 @@
+<div id="form-frame">
+    <mat-card>
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="field-set">
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Username</mat-label> 
+                    <input matInput type="text" [formControl]="usernameField" maxlength="64">
+                    <mat-error *ngIf="usernameField.hasError('required')">
+                        Username is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="usernameField.hasError('minlength')">
+                        Username has to be at least <strong>4 characters</strong> long
+                    </mat-error>
+                    <mat-error *ngIf="usernameField.hasError('maxlength')">
+                        Username cannot be longer than <strong>32 characters</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Password</mat-label> 
+                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" [formControl]="passwordField" maxlength="64">
+                    <mat-icon class="no-select" (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <mat-error *ngIf="passwordField.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="passwordField.hasError('minlength')">
+                        Password has to be at least <strong>6 characters</strong> long
+                    </mat-error>
+                    <mat-error *ngIf="passwordField.hasError('maxlength')">
+                        Password cannot be longer than <strong>16 characters</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Confirm Password</mat-label> 
+                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" [formControl]="confirmPasswordField" maxlength="64">
+                    <mat-icon class="no-select" (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <mat-error *ngIf="confirmPasswordField.hasError('required')">
+                        Password confirmation is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="field-set">
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Email</mat-label> 
+                    <input matInput type="email" [formControl]="emailField" maxlength="64">
+                    <mat-error *ngIf="emailField.hasError('email')">
+                        Entered email is <strong>invalid</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>First Name</mat-label> 
+                    <input matInput type="text" [formControl]="firstNameField" maxlength="64">
+                    <mat-error *ngIf="firstNameField.hasError('required')">
+                        First name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Last Name</mat-label> 
+                    <input matInput type="text" [formControl]="lastNameField" maxlength="64">
+                    <mat-error *ngIf="lastNameField.hasError('required')">
+                        Last name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button>Register</button>
+        </form>
+    </mat-card>
+</div>

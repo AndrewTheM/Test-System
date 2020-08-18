@@ -35,8 +35,7 @@ header nav ul {
 .nav-btn {
     display: block;
     text-align: center;
-    width: 130px;
-    padding: 15px 0;
+    padding: 15px 30px;
 
     font-size: 16pt;
     font-weight: 500;

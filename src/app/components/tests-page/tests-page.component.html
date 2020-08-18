@@ -1,11 +1,11 @@
-<mat-chip-list>
+<div id="tests-wrapper">
     <ng-container *ngFor="let test of tests">
-        <mat-chip selected (click)="openTest(test.id)">
+        <mat-card matRipple (click)="openTest(test.id)">
             <div class="no-select">
                 {{ test.name }}
                 <br>
                 ({{ test.questions.length }} questions)
             </div>
-        </mat-chip>
+        </mat-card>
     </ng-container>
-</mat-chip-list>
+</div>

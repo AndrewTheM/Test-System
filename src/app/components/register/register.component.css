@@ -15,11 +15,12 @@ button {
     margin-top: 10px;
     font-size: 13pt;
     background: rgb(50, 56, 146);
+    align-self: center;
 }
 
 mat-card {
     padding: 30px;
-    width: 400px;
+    width: 700px;
     margin-top: 50px;
 
     display: flex;
@@ -29,15 +30,13 @@ mat-card {
     background: rgba(10, 19, 78, 0.9);
 }
 
+form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
 #form-frame {
     display: flex;
     justify-content: center;
-}
-
-p {
-    margin-top: 20px;
-}
-
-p a {
-    color: rgb(179, 232, 250);
 }
