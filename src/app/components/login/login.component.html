@@ -1,12 +1,22 @@
-<form [formGroup]="loginForm" (ngSubmit)="submitCredentials()">
-    <mat-form-field appearance="outline">
-        <mat-label>Username</mat-label> 
-        <input matInput type="text">
-    </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Password</mat-label> 
-        <input matInput type="{{ hidePassword ? 'password' : 'text' }}">
-        <mat-icon (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-    </mat-form-field>
-    <button mat-raised-button color="primary">Log In</button>
-</form>
+<div id="form-frame">
+    <mat-card>
+        <form [formGroup]="loginForm" (ngSubmit)="submitCredentials()">
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Username</mat-label> 
+                <input matInput type="text" [formControl]="usernameField">
+                <mat-error *ngIf="usernameField.hasError('required')">
+                    Username is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="fill" color="accent">
+                <mat-label>Password</mat-label> 
+                <input matInput type="{{ hidePassword ? 'password' : 'text' }}" [formControl]="passwordField">
+                <mat-icon class="no-select" (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                <mat-error *ngIf="passwordField.hasError('required')">
+                    Password is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+            <button mat-raised-button>Log In</button>
+        </form>
+    </mat-card>
+</div>

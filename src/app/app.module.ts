@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from "@angular/material/button";
+
+import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './helpers';
 
 import { TestsPageComponent, 
           HomePageComponent,
@@ -49,7 +51,12 @@ import { TestsPageComponent,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+
+        fakeBackendProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

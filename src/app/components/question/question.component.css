@@ -1,6 +1,6 @@
 mat-radio-button, mat-checkbox {
     display: block;
-    margin-top: 5px;
+    margin-top: 6px;
     width: 0;
 }
 
@@ -11,10 +11,10 @@ ol {
 li {
     margin: 3px 0 3px 15px;
     font-weight: normal;
-    font-size: 10pt;
+    font-size: 11pt;
 }
 
 h4 {
     font-weight: 500;
-    font-size: 11pt;
+    font-size: 12pt;
 }
