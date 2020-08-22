@@ -1,12 +1,16 @@
-export class Question {
-    //id: number;
-    text: string;
-    options: string[];
-    multipleChoicesEnabled: boolean;
+import { Option } from './';
 
-    constructor(text: string, options: string[], multipleChoicesEnabled: boolean = false) {
+export class Question {
+    id: number;
+    text: string;
+    options: Option[];
+    multiple: boolean;
+    image: any[];
+
+    constructor(text: string, options: Option[], multiple: boolean = false, image: any[] = null) {
         this.text = text;
         this.options = options;
-        this.multipleChoicesEnabled = multipleChoicesEnabled;
+        this.image = image;
+        this.multiple = multiple;
     }
 }
