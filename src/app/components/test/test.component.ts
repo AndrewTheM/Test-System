@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Test } from '../../models';
-import { tests } from '../tests';
+import { Test } from '@app/models';
+import { TestService } from '@app/services';
 
 @Component({
   selector: 'app-test',
@@ -10,19 +10,18 @@ import { tests } from '../tests';
   styleUrls: ['./test.component.css']
 })
 export class TestComponent implements OnInit {
-
-  tests: Test[] = tests;
-
-  //@Input()
+  
   testModel: Test;
 
-  constructor(private route: ActivatedRoute) {
-    
-  }
-
+  constructor(private route: ActivatedRoute,
+              private testService: TestService) { }
+  
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.testModel = this.tests.find(t => t.id == +params.get('id'));
+      let id = +params.get('id');
+      this.testService.get(id).subscribe(data => {
+        this.testModel = data;
+      });
     });
   }
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Test } from '../../models';
-import { tests } from '../tests';
+import { Test } from '@app/models';
+import { TestService } from '@app/services';
 
 @Component({
   selector: 'app-tests-page',
@@ -11,11 +11,15 @@ import { tests } from '../tests';
 })
 export class TestsPageComponent implements OnInit {
 
-  tests: Test[] = tests;
+  tests: Test[];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private testService: TestService) { }
 
   ngOnInit(): void {
+    this.testService.getAll().subscribe(data => {
+      this.tests = data;
+    });
   }
 
   openTest(id: number) : void {
