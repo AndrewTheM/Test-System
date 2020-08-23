@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Test } from '@app/models';
-import { TestService } from '@app/services';
+import { TestService, AuthenticationService } from '@app/services';
 
 @Component({
   selector: 'app-tests-page',
@@ -14,7 +14,8 @@ export class TestsPageComponent implements OnInit {
   tests: Test[];
 
   constructor(private router: Router,
-              private testService: TestService) { }
+              private testService: TestService,
+              public authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.testService.getAll().subscribe(data => {
@@ -24,6 +25,10 @@ export class TestsPageComponent implements OnInit {
 
   openTest(id: number) : void {
     this.router.navigate(['/tests', id]);
+  }
+
+  addTest() {
+    
   }
 
 }

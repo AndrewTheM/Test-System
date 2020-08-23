@@ -1,14 +1,14 @@
-<h4>{{ questionModel.text }}</h4>
-<mat-radio-group>
+<h4 *ngIf="questionModel">{{ questionModel.text }}</h4>
+<mat-radio-group (change)="setAnswer($event)">
     <ol type="a">
         <ng-container *ngFor="let option of questionModel.options; let i = index">
-                <mat-radio-button *ngIf="!questionModel.multiple; else checkbox" value="{{ i }}">
+                <mat-radio-button *ngIf="!questionModel.multiple; else checkbox" value="{{ option.id }}">
                     <li>
                         {{ option.text }}
                     </li>
                 </mat-radio-button>
                 <ng-template #checkbox>
-                    <mat-checkbox value="{{ i }}">
+                    <mat-checkbox (change)="changeAnswer($event)" value="{{ option.id }}">
                         <li>
                             {{ option.text }}
                         </li>

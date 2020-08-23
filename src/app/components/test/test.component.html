@@ -1,10 +1,13 @@
-<h1>{{ testModel.name }}</h1>
+<h1>{{ testModel ? testModel.name : '' }}</h1>
 <ol>
     <ng-container *ngFor="let question of testModel.questions">
         <mat-card>
             <li>
-                <app-question [questionModel]="question"></app-question>
+                <app-question [questionModel]="question"
+                                (answerChosen)="onAnswerChange($event, question)">
+                </app-question>
             </li>
         </mat-card>
     </ng-container>
 </ol>
+<button mat-raised-button color="basic" (click)="finishTest()">Finish Test</button>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Test } from '@app/models';
+import { Test, Question } from '@app/models';
 import { TestService } from '@app/services';
 
 @Component({
@@ -25,4 +25,25 @@ export class TestComponent implements OnInit {
     });
   }
 
+  onAnswerChange(answerIds: number[], question: Question) {
+    question.options.forEach(option => {
+      option.selected = answerIds.includes(option.id);
+    });
+  }
+
+  finishTest() {
+    let totalPoints = 0, earnedPoints = 0;
+
+    this.testModel.questions.forEach(question => {
+      question.options.forEach(option => {
+        totalPoints += option.points;
+
+        if (option.correct && option.selected) {
+          earnedPoints += option.points;
+        }
+      });
+    });
+
+    alert(`${earnedPoints}/${totalPoints}`);
+  }
 }

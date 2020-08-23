@@ -12,6 +12,10 @@ mat-card {
     align-items: center;
 }
 
+#admin-panel button {
+    font-size: 12pt;
+}
+
 #tests-wrapper {
     display: flex;
     flex-flow: row wrap;

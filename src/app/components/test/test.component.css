@@ -17,3 +17,8 @@ ol {
     font-weight: 500;
     font-size: 12pt;
 }
+
+button {
+    margin: 15px;
+    background: rgb(50, 56, 146);
+}

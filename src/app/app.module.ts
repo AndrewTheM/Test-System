@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from "@angular/material/button";
 import { MatRippleModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './helpers';
 
@@ -27,6 +28,7 @@ import { TestsPageComponent,
           QuestionComponent,
           AccountPageComponent,
           RegisterComponent } from './components';
+import { TestEditorComponent } from './components/test-editor/test-editor.component';
   
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { TestsPageComponent,
     NotFoundComponent,
     LoginComponent,
     AccountPageComponent,
-    RegisterComponent
+    RegisterComponent,
+    TestEditorComponent
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { TestsPageComponent,
     MatIconModule,
     MatButtonModule,
     MatRippleModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule
   ],

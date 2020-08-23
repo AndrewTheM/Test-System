@@ -1,3 +1,6 @@
+<div *ngIf="authService.userValue && authService.userValue.role == 'Admin'" id="admin-panel">
+    <button mat-raised-button color="accent" (click)="addTest()">Add Test</button>
+</div>
 <div id="tests-wrapper">
     <ng-container *ngFor="let test of tests">
         <mat-card matRipple (click)="openTest(test.id)">
