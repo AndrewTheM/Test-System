@@ -20,7 +20,8 @@ const routes: Routes = [
   { path: 'tests/:id', component: TestComponent, canActivate: [AuthGuard] },
   { path: 'contacts', component: ContactsPageComponent },
   { path: 'account', component: AccountPageComponent, canActivate: [AuthGuard] },
-  { path: '**', component: NotFoundComponent }
+  { path: 'not-found', component: NotFoundComponent },
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 @NgModule({

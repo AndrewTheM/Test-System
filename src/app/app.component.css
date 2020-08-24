@@ -46,7 +46,7 @@ header nav ul {
     list-style-type: none;
 }
 
-.nav-btn {
+.nav-btn, .admin-nav-btn {
     display: block;
     text-align: center;
     padding: 15px 30px;
@@ -57,5 +57,14 @@ header nav ul {
 
 .nav-btn:hover, .nav-btn:active {
     color: rgb(9, 4, 56);
+    background: rgb(250, 250, 250);
+}
+
+.admin-nav-btn {
+    background: rgb(136, 38, 38);
+}
+
+.admin-nav-btn:hover, .admin-nav-btn:active {
+    color: rgb(136, 38, 38);
     background: rgb(250, 250, 250);
 }

@@ -35,11 +35,23 @@ export class TestComponent implements OnInit {
     let totalPoints = 0, earnedPoints = 0;
 
     this.testModel.questions.forEach(question => {
+      let allAreSelected = question.options.every(o => o.selected);
+      let allAreCorrect = question.options.every(o => o.correct);
+
       question.options.forEach(option => {
         totalPoints += option.points;
 
-        if (option.correct && option.selected) {
-          earnedPoints += option.points;
+        if (!allAreCorrect && allAreSelected) {
+          return;
+        }
+
+        if (option.selected) {
+          if (option.correct) {
+            earnedPoints += option.points;
+          }
+          else {
+            earnedPoints -= option.points;
+          }
         }
       });
     });
