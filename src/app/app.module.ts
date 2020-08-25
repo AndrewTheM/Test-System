@@ -27,8 +27,8 @@ import { TestsPageComponent,
           LoginComponent,
           QuestionComponent,
           AccountPageComponent,
-          RegisterComponent } from './components';
-import { TestEditorComponent } from './components/test-editor/test-editor.component';
+          RegisterComponent,
+          TestEditorComponent } from './components';
   
 @NgModule({
   declarations: [
@@ -62,10 +62,10 @@ import { TestEditorComponent } from './components/test-editor/test-editor.compon
     ReactiveFormsModule
   ],
   providers: [
-        { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+        // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+        // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
 
-        fakeBackendProvider
+        // fakeBackendProvider
   ],
   bootstrap: [AppComponent]
 })

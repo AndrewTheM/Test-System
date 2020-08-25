@@ -7,3 +7,4 @@ export * from './tests-page/tests-page.component';
 export * from './login/login.component';
 export * from './register/register.component';
 export * from './account-page/account-page.component';
+export * from './test-editor/test-editor.component';
