@@ -1,4 +1,5 @@
 <div id="tests-wrapper">
+    <mat-spinner *ngIf="!tests"></mat-spinner>
     <ng-container *ngFor="let test of tests">
         <mat-card matRipple (click)="openTest(test.id)">
             <div class="no-select">

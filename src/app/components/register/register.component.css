@@ -15,7 +15,12 @@ button {
     margin-top: 10px;
     font-size: 13pt;
     background: rgb(50, 56, 146);
-    align-self: center;
+
+}
+
+mat-spinner {
+    display: inline-block;
+    margin-left: 10px;
 }
 
 mat-card {

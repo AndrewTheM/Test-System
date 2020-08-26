@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCardModule } from '@angular/material/card';
@@ -16,8 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from "@angular/material/button";
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
-
-import { JwtInterceptor, ErrorInterceptor, fakeBackendProvider } from './helpers';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { TestsPageComponent, 
           HomePageComponent,
@@ -58,15 +57,11 @@ import { TestsPageComponent,
     MatButtonModule,
     MatRippleModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [
-        // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-        // { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-
-        // fakeBackendProvider
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

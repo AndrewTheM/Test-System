@@ -4,64 +4,69 @@
             <div class="field-set">
                 <mat-form-field appearance="fill" color="accent">
                     <mat-label>Username</mat-label> 
-                    <input matInput type="text" [formControl]="usernameField" maxlength="64">
-                    <mat-error *ngIf="usernameField.hasError('required')">
+                    <input matInput type="text" formControlName="username" maxlength="64" required>
+                    <mat-error *ngIf="f.username.hasError('required')">
                         Username is <strong>required</strong>
                     </mat-error>
-                    <mat-error *ngIf="usernameField.hasError('minlength')">
+                    <mat-error *ngIf="f.username.hasError('minlength')">
                         Username has to be at least <strong>4 characters</strong> long
                     </mat-error>
-                    <mat-error *ngIf="usernameField.hasError('maxlength')">
+                    <mat-error *ngIf="f.username.hasError('maxlength')">
                         Username cannot be longer than <strong>32 characters</strong>
                     </mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="fill" color="accent">
-                    <mat-label>Password</mat-label> 
-                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" [formControl]="passwordField" maxlength="64">
-                    <mat-icon class="no-select" (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                    <mat-error *ngIf="passwordField.hasError('required')">
-                        Password is <strong>required</strong>
-                    </mat-error>
-                    <mat-error *ngIf="passwordField.hasError('minlength')">
-                        Password has to be at least <strong>6 characters</strong> long
-                    </mat-error>
-                    <mat-error *ngIf="passwordField.hasError('maxlength')">
-                        Password cannot be longer than <strong>16 characters</strong>
-                    </mat-error>
-                </mat-form-field>
-                <mat-form-field appearance="fill" color="accent">
-                    <mat-label>Confirm Password</mat-label> 
-                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" [formControl]="confirmPasswordField" maxlength="64">
-                    <mat-icon class="no-select" (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                    <mat-error *ngIf="confirmPasswordField.hasError('required')">
-                        Password confirmation is <strong>required</strong>
-                    </mat-error>
-                </mat-form-field>
+                <div>
+                    <mat-form-field appearance="fill" color="accent">
+                        <mat-label>Password</mat-label> 
+                        <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" maxlength="64" required (input)="onPasswordInput()">
+                        <mat-icon class="no-select" (click)="hidePassword = !hidePassword" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        <mat-error *ngIf="f.password.hasError('required')">
+                            Password is <strong>required</strong>
+                        </mat-error>
+                        <mat-error *ngIf="f.password.hasError('minlength')">
+                            Password has to be at least <strong>6 characters</strong> long
+                        </mat-error>
+                        <mat-error *ngIf="f.password.hasError('maxlength')">
+                            Password cannot be longer than <strong>16 characters</strong>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" color="accent">
+                        <mat-label>Confirm Password</mat-label> 
+                        <input matInput type="{{ hideConfirm ? 'password' : 'text' }}" formControlName="confirm" maxlength="64" required (input)="onPasswordInput()">
+                        <mat-icon class="no-select" (click)="hideConfirm = !hideConfirm" matSuffix>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+                        <mat-error *ngIf="registerForm.get('confirm').invalid">
+                            Passwords do not match
+                        </mat-error>
+                    </mat-form-field>
+                </div>
             </div>
             <div class="field-set">
                 <mat-form-field appearance="fill" color="accent">
                     <mat-label>Email</mat-label> 
-                    <input matInput type="email" [formControl]="emailField" maxlength="64">
-                    <mat-error *ngIf="emailField.hasError('email')">
+                    <input matInput type="email" formControlName="email" maxlength="64">
+                    <mat-error *ngIf="f.email.hasError('email')">
                         Entered email is <strong>invalid</strong>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" color="accent">
                     <mat-label>First Name</mat-label> 
-                    <input matInput type="text" [formControl]="firstNameField" maxlength="64">
-                    <mat-error *ngIf="firstNameField.hasError('required')">
+                    <input matInput type="text" formControlName="firstName" maxlength="64" required>
+                    <mat-error *ngIf="f.firstName.hasError('required')">
                         First name is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" color="accent">
                     <mat-label>Last Name</mat-label> 
-                    <input matInput type="text" [formControl]="lastNameField" maxlength="64">
-                    <mat-error *ngIf="lastNameField.hasError('required')">
+                    <input matInput type="text" formControlName="lastName" maxlength="64" required>
+                    <mat-error *ngIf="f.lastName.hasError('required')">
                         Last name is <strong>required</strong>
                     </mat-error>
                 </mat-form-field>
             </div>
-            <button mat-raised-button>Register</button>
+            <button mat-raised-button [disabled]="loading">
+                Register
+                <mat-spinner *ngIf="loading" matSuffix diameter="30" color="accent"></mat-spinner>
+            </button>
         </form>
     </mat-card>
 </div>

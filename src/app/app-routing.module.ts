@@ -8,9 +8,11 @@ import { TestsPageComponent,
           TestComponent,
           LoginComponent,
           AccountPageComponent,
-          RegisterComponent } from './components';
+          RegisterComponent, 
+          TestEditorComponent } from './components';
 
 import { AuthGuard } from './helpers';
+import { Role } from './models';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path: 'tests/:id', component: TestComponent, canActivate: [AuthGuard] },
   { path: 'contacts', component: ContactsPageComponent },
   { path: 'account', component: AccountPageComponent, canActivate: [AuthGuard] },
+  { path: 'editor', component: TestEditorComponent, canActivate: [AuthGuard], data: { roles: [Role.Admin] } },
   { path: 'not-found', component: NotFoundComponent },
   { path: '**', redirectTo: 'not-found' }
 ];

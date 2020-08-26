@@ -17,6 +17,11 @@ button {
     background: rgb(50, 56, 146);
 }
 
+mat-spinner {
+    display: inline-block;
+    margin-left: 10px;
+}
+
 mat-card {
     padding: 30px;
     width: 400px;

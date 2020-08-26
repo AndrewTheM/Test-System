@@ -26,12 +26,21 @@ export class AuthenticationService {
     return this.userSubject.value;
   }
 
+  register(user: User) {
+    return this.http.post<any>(`${environment.apiURL}/auth/register`, user)
+      .pipe(map<Auth, User>(auth => {
+        if (auth.errors && auth.errors.length > 0) {
+          throw auth.errors.join('\n');
+        }
+        return auth.user;
+      }));
+  }
+
   login(username: string, password: string) {
     return this.http.post<any>(`${environment.apiURL}/auth/login`, { username, password })
       .pipe(map<Auth, User>(auth => {
         if (auth.errors && auth.errors.length > 0) {
-          alert(auth.errors.join('\n'));
-          return null;
+          throw auth.errors.join('\n');
         }
 
         localStorage.setItem('user', JSON.stringify(auth.user));
@@ -43,6 +52,6 @@ export class AuthenticationService {
   logout() {
     localStorage.removeItem('user');
     this.userSubject.next(null);
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 }

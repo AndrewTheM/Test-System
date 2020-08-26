@@ -13,11 +13,10 @@ import { AuthenticationService } from '@app/services';
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
-  usernameField: FormControl;
-  passwordField: FormControl;
 
   returnUrl: string;
   hidePassword: boolean = true;
+  loading: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -29,11 +28,9 @@ export class LoginComponent implements OnInit {
         return;
     }
 
-    this.usernameField = new FormControl('', [Validators.required]);
-    this.passwordField = new FormControl('', [Validators.required]);
     this.loginForm = this.formBuilder.group({
-      username: this.usernameField,
-      password: this.passwordField
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     });
 
 }
@@ -46,7 +43,7 @@ export class LoginComponent implements OnInit {
     this.hidePassword = !this.hidePassword;
   }
 
-  get f() {
+  public get f() {
     return this.loginForm.controls;
   }
 
@@ -54,14 +51,17 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid)
       return;
 
+    this.loading = true;
     this.authenticationService.login(this.f.username.value, this.f.password.value)
         .pipe(first())
         .subscribe(
             data => {
-                this.router.navigate([this.returnUrl]);
+              this.loading = false;
+              this.router.navigate([this.returnUrl]);
             },
             error => {
-              alert('Login failed!');
+              this.loading = false;
+              alert(error);
             });
   }
 }
