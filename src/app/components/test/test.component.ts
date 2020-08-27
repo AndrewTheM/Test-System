@@ -44,8 +44,9 @@ export class TestComponent implements OnInit {
     this.testModel.questions.forEach(q => {
       totalPoints += q.points;
 
-      let f = q.options.filter(op => op.correct).every(op => op.selected);
-      if (f) {
+      let f1 = q.options.filter(op => op.correct).every(op => op.selected);
+      let f2 = q.options.filter(op => !op.correct).every(op => !op.selected);
+      if (f1 && f2) {
         earnedPoints += q.points;
       }
     });

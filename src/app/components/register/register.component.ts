@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
               data => {
                 this.loading = false;
                 alert('Registration succeded! Returning to login page...');
-                this.router.navigate([this.returnUrl]);
+                this.router.navigate(['/login'], { queryParams: { returnUrl: this.returnUrl }});
               },
               error => {
                 this.loading = false;

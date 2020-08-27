@@ -22,7 +22,7 @@ export class TestService {
   }
 
   getAttempts(userId: string) : Observable<Attempt[]> {
-    return this.http.get<Attempt[]>(`${environment.apiURL}/attempts/${userId}}`);
+    return this.http.get<Attempt[]>(`${environment.apiURL}/attempts/${userId}`);
   }
 
   postAttempt(attempt: Attempt) : Observable<Attempt> {
