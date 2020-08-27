@@ -3,9 +3,13 @@
     <ng-container *ngFor="let test of tests">
         <mat-card matRipple (click)="openTest(test.id)">
             <div class="no-select">
-                {{ test.name }}
+                <strong>{{ test.name }}</strong>
                 <br>
                 ({{ test.questions.length }} questions)
+                <div *ngIf="test.category">
+                    <hr>
+                    <em>{{ test.category }}</em>
+                </div>
             </div>
         </mat-card>
     </ng-container>

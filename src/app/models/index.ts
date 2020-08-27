@@ -4,3 +4,4 @@ export * from './test.model';
 export * from './user.model';
 export * from './option.model';
 export * from './auth.model';
+export * from './attempt.model';

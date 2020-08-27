@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
-import { Test, Question } from '@app/models';
-import { TestService } from '@app/services';
+import { Test, Question, Attempt } from '@app/models';
+import { TestService, AuthenticationService } from '@app/services';
 
 @Component({
   selector: 'app-test',
@@ -14,7 +14,9 @@ export class TestComponent implements OnInit {
   testModel: Test;
 
   constructor(private route: ActivatedRoute,
-              private testService: TestService) { }
+              private router: Router,
+              private testService: TestService,
+              private authService: AuthenticationService) { }
   
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
@@ -32,30 +34,32 @@ export class TestComponent implements OnInit {
   }
 
   finishTest() {
+    let f = confirm('Are you sure to finish the test?');
+    if (!f) {
+      return;
+    }
+
     let totalPoints = 0, earnedPoints = 0;
 
-    this.testModel.questions.forEach(question => {
-      let allAreSelected = question.options.every(o => o.selected);
-      let allAreCorrect = question.options.every(o => o.correct);
+    this.testModel.questions.forEach(q => {
+      totalPoints += q.points;
 
-      question.options.forEach(option => {
-        totalPoints += option.points;
-
-        if (!allAreCorrect && allAreSelected) {
-          return;
-        }
-
-        if (option.selected) {
-          if (option.correct) {
-            earnedPoints += option.points;
-          }
-          else {
-            earnedPoints -= option.points;
-          }
-        }
-      });
+      let f = q.options.filter(op => op.correct).every(op => op.selected);
+      if (f) {
+        earnedPoints += q.points;
+      }
     });
 
-    alert(`${earnedPoints}/${totalPoints}`);
+    let attempt = new Attempt(earnedPoints, new Date(), this.testModel.id, this.authService.userValue.id);
+    this.testService.postAttempt(attempt).subscribe(
+      data => {
+        let percent = Math.round(earnedPoints / totalPoints * 100);
+        alert(`Your result: ${earnedPoints}/${totalPoints} (${percent}%)`);
+        this.router.navigate(['/tests']);
+      },
+      error => {
+        alert('Failed to finish the test. PLease, try again later.');
+      }
+    )
   }
 }
