@@ -8,7 +8,7 @@ export class Question {
     multiple: boolean;
     image: any[];
 
-    constructor(text: string, options: Option[], points: number, multiple: boolean = false, image: any[] = null) {
+    constructor(text: string, options: Option[] = [], points: number = 1, multiple: boolean = false, image: any[] = []) {
         this.text = text;
         this.options = options;
         this.points = points;

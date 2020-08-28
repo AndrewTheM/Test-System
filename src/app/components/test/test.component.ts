@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Test, Question, Attempt } from '@app/models';
-import { TestService, AuthenticationService } from '@app/services';
+import { TestService, AuthenticationService, CompletionService } from '@app/services';
 
 @Component({
   selector: 'app-test',
@@ -16,6 +16,7 @@ export class TestComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private router: Router,
               private testService: TestService,
+              private completionService: CompletionService,
               private authService: AuthenticationService) { }
   
   ngOnInit(): void {
@@ -44,15 +45,18 @@ export class TestComponent implements OnInit {
     this.testModel.questions.forEach(q => {
       totalPoints += q.points;
 
-      let f1 = q.options.filter(op => op.correct).every(op => op.selected);
-      let f2 = q.options.filter(op => !op.correct).every(op => !op.selected);
-      if (f1 && f2) {
-        earnedPoints += q.points;
+      let incorrectNotSelected = q.options.filter(op => !op.correct).every(op => !op.selected);
+      if (incorrectNotSelected) {
+        let correctOptions = q.options.filter(op => op.correct);
+        let correctSelected = (q.multiple) ? correctOptions.every(op => op.selected) : correctOptions.some(op => op.selected);
+        if (correctSelected) {
+          earnedPoints += q.points;
+        }
       }
     });
 
     let attempt = new Attempt(earnedPoints, new Date(), this.testModel.id, this.authService.userValue.id);
-    this.testService.postAttempt(attempt).subscribe(
+    this.completionService.create(attempt).subscribe(
       data => {
         let percent = Math.round(earnedPoints / totalPoints * 100);
         alert(`Your result: ${earnedPoints}/${totalPoints} (${percent}%)`);

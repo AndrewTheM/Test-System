@@ -17,6 +17,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { TestsPageComponent, 
           HomePageComponent,
@@ -57,6 +58,7 @@ import { TestsPageComponent,
     MatButtonModule,
     MatRippleModule,
     MatDialogModule,
+    MatExpansionModule,
     MatProgressSpinnerModule,
     FormsModule,
     ReactiveFormsModule

@@ -1,23 +1,68 @@
 <div id="form-frame">
-    <!-- <mat-card>
-        <form [formGroup]="testForm" (ngSubmit)="submitNewTest()">
-            <mat-form-field appearance="fill" color="accent">
-                <mat-label>Username</mat-label> 
-                <input matInput type="text" [formControl]="usernameField">
-                <mat-error *ngIf="usernameField.hasError('required')">
-                    Username is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field appearance="fill" color="accent">
-                <mat-label>Password</mat-label> 
-                <input matInput type="{{ hidePassword ? 'password' : 'text' }}" [formControl]="passwordField">
-                <mat-icon class="no-select" (click)="changeVisibility()" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
-                <mat-error *ngIf="passwordField.hasError('required')">
-                    Password is <strong>required</strong>
-                </mat-error>
-            </mat-form-field>
-            <button mat-raised-button>Log In</button>
-        </form>
-        <p>Don't have an account? <a routerLink="/register">Register now</a></p>
-    </mat-card> -->
+    <mat-spinner *ngIf="!tests"></mat-spinner>
+    <div id="btn-block">
+        <button id="add-btn" mat-raised-button color="primary" *ngIf="tests" (click)="addTest()" [disabled]="editingNew">
+            <mat-icon>add</mat-icon>
+        </button>
+        <button id="reload-btn" mat-raised-button color="primary" *ngIf="tests" (click)="reload(true)">
+            <mat-icon>replay</mat-icon>
+        </button>
+    </div>
+    <ng-container *ngFor="let test of tests">
+        <mat-expansion-panel class="no-select test-panel">
+            <mat-expansion-panel-header>[ {{ test.id || '?' }} ] - {{ test.name }}</mat-expansion-panel-header>
+            <button mat-raised-button color="primary" (click)="addQuestion(test)">Add Question</button>
+            <button mat-raised-button color="accent" (click)="saveTest(test)">Save Changes</button>
+            <button mat-raised-button color="warn" (click)="deleteTest(test)">Delete</button>
+            <form>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Test Name</mat-label>
+                    <input matInput type="text" [(ngModel)]="test.name" name="testName">
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Category</mat-label>
+                    <input matInput type="text" [(ngModel)]="test.category" name="category">
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Minutes Limit</mat-label>
+                    <input matInput type="number" [(ngModel)]="test.minutes" name="minutes" min="0" max="1440">
+                </mat-form-field>
+                <mat-form-field appearance="outline" color="accent">
+                    <mat-label>Max Tries</mat-label>
+                    <input matInput type="number" [(ngModel)]="test.tries" name="tries" min="0" max="100">
+                </mat-form-field>
+            </form>
+            <ng-container *ngFor="let question of test.questions">
+                <mat-expansion-panel class="question-panel">
+                    <button mat-raised-button color="primary" (click)="addOption(question)">Add Answer</button>
+                    <button mat-raised-button color="warn" (click)="deleteQuestion(test, question)">Delete</button>
+                    <mat-expansion-panel-header>{{ question.text }} ({{ question.points }} points)</mat-expansion-panel-header>
+                    <form>
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Question Text</mat-label>
+                            <input matInput type="text" [(ngModel)]="question.text" name="questionText">
+                        </mat-form-field>
+                        <mat-form-field appearance="outline" color="accent">
+                            <mat-label>Points Worth</mat-label>
+                            <input matInput type="number" [(ngModel)]="question.points" name="points" min="1" max="100">
+                        </mat-form-field>
+                        <mat-checkbox [(ngModel)]="question.multiple" name="multiple">Multiple Answer Select</mat-checkbox>
+                    </form>
+                    <ng-container *ngFor="let option of question.options">
+                        <mat-expansion-panel class="answer-panel">
+                            <mat-expansion-panel-header>{{ option.text }} {{ (option.correct) ? '[+]' : '' }}</mat-expansion-panel-header>
+                            <button mat-raised-button color="warn" (click)="deleteOption(question, option)">Delete</button>
+                            <form>
+                                <mat-form-field appearance="outline" color="accent">
+                                    <mat-label>Answer Text</mat-label>
+                                    <input matInput type="text" [(ngModel)]="option.text" name="optionText">
+                                </mat-form-field>
+                                <mat-checkbox [(ngModel)]="option.correct" name="multiple">Correct</mat-checkbox>
+                            </form>
+                        </mat-expansion-panel>
+                    </ng-container>
+                </mat-expansion-panel>
+            </ng-container>
+        </mat-expansion-panel>
+    </ng-container>
 </div>

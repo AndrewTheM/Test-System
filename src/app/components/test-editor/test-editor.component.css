@@ -1,0 +1,45 @@
+#form-frame {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#btn-block {
+    align-self: flex-start;
+    margin: 10px 80px;
+}
+
+mat-expansion-panel {
+    margin: 10px;
+}
+
+button {
+    margin-left: 20px;
+}
+
+.test-panel, .answer-panel {
+    background: rgb(35, 29, 99);
+}
+
+.question-panel {
+    background: rgb(14, 9, 82);
+}
+
+mat-expansion-panel-header {
+    font-size: 13pt;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    margin-top: 20px;
+}
+
+mat-form-field, mat-checkbox {
+    margin: 0 20px;
+    font-size: 12pt;
+}

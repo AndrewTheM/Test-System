@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Test, Attempt, User } from '@app/models';
-import { TestService, AuthenticationService } from '@app/services';
+import { TestService, AuthenticationService, CompletionService } from '@app/services';
 
 @Component({
   selector: 'app-tests-page',
@@ -16,16 +16,18 @@ export class TestsPageComponent implements OnInit {
 
   constructor(private router: Router,
               private testService: TestService,
+              private completionService: CompletionService,
               public authService: AuthenticationService) { }
 
   ngOnInit(): void {
+    this.tests = null;
     this.testService.getAll().subscribe(data => {
       this.tests = data;
     });
 
     let currentUser = this.authService.userValue;
     if (currentUser) {
-      this.testService.getAttempts(currentUser.id).subscribe(data => {
+      this.completionService.getAll(currentUser.id).subscribe(data => {
         this.attempts = data;
       });
     }

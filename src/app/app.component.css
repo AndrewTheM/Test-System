@@ -1,5 +1,6 @@
 #wrapper {
     background: rgb(250, 250, 250);
+    min-width: 720px;
 }
 
 header h1 {
