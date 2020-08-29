@@ -22,6 +22,9 @@ export class TestEditorComponent implements OnInit {
   reload(displayWarning: boolean = false) {
     if (displayWarning) {
       let f = confirm('Warning! Unsaved changes will be lost if you reload.');
+      if (!f) {
+        return;
+      }
     }
 
     this.editingNew = false;
@@ -100,17 +103,27 @@ export class TestEditorComponent implements OnInit {
       return;
     }
 
-    let index = test.questions.indexOf(question);
-    test.questions.splice(index, 1);
+    if (test.id) {
+      question.state = -1;
+    }
+    else {
+      let index = test.questions.indexOf(question);
+      test.questions.splice(index, 1);
+    }
   }
 
-  deleteOption(question: Question, option: Option) {
+  deleteOption(test: Test, question: Question, option: Option) {
     let f = confirm('Are you sure to delete this answer?');
     if (!f) {
       return;
     }
 
-    let index = question.options.indexOf(option);
-    question.options.splice(index, 1);
+    if (test.id) {
+      option.state = -1;
+    }
+    else {
+      let index = question.options.indexOf(option);
+      question.options.splice(index, 1);
+    }
   }
 }

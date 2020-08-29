@@ -6,6 +6,8 @@ export class Option {
 
     selected: boolean = false;
 
+    state: number = 0;
+
     constructor(text: string, correct: boolean = false, image: any[] = null) {
         this.text = text;
         this.correct = correct;

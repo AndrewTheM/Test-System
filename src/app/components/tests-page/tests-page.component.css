@@ -12,8 +12,15 @@ mat-card {
     align-items: center;
 }
 
+#admin-panel {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
 #admin-panel button {
-    font-size: 12pt;
+    font-size: 14pt;
+    padding: 5px 20px;
 }
 
 #tests-wrapper {

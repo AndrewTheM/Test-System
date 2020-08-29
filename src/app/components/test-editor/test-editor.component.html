@@ -33,31 +33,31 @@
                 </mat-form-field>
             </form>
             <ng-container *ngFor="let question of test.questions">
-                <mat-expansion-panel class="question-panel">
+                <mat-expansion-panel *ngIf="question.state != -1" class="question-panel">
                     <button mat-raised-button color="primary" (click)="addOption(question)">Add Answer</button>
                     <button mat-raised-button color="warn" (click)="deleteQuestion(test, question)">Delete</button>
                     <mat-expansion-panel-header>{{ question.text }} ({{ question.points }} points)</mat-expansion-panel-header>
                     <form>
                         <mat-form-field appearance="outline" color="accent">
                             <mat-label>Question Text</mat-label>
-                            <input matInput type="text" [(ngModel)]="question.text" name="questionText">
+                            <input matInput type="text" [(ngModel)]="question.text" name="questionText" (change)="question.state = question.state || 1">
                         </mat-form-field>
                         <mat-form-field appearance="outline" color="accent">
                             <mat-label>Points Worth</mat-label>
-                            <input matInput type="number" [(ngModel)]="question.points" name="points" min="1" max="100">
+                            <input matInput type="number" [(ngModel)]="question.points" name="points" min="1" max="100" (change)="question.state = question.state || 1">
                         </mat-form-field>
-                        <mat-checkbox [(ngModel)]="question.multiple" name="multiple">Multiple Answer Select</mat-checkbox>
+                        <mat-checkbox [(ngModel)]="question.multiple" name="multiple" (change)="question.state = question.state || 1">Multiple Answer Select</mat-checkbox>
                     </form>
                     <ng-container *ngFor="let option of question.options">
-                        <mat-expansion-panel class="answer-panel">
+                        <mat-expansion-panel *ngIf="option.state != -1" class="answer-panel">
                             <mat-expansion-panel-header>{{ option.text }} {{ (option.correct) ? '[+]' : '' }}</mat-expansion-panel-header>
-                            <button mat-raised-button color="warn" (click)="deleteOption(question, option)">Delete</button>
+                            <button mat-raised-button color="warn" (click)="deleteOption(test, question, option)">Delete</button>
                             <form>
                                 <mat-form-field appearance="outline" color="accent">
                                     <mat-label>Answer Text</mat-label>
-                                    <input matInput type="text" [(ngModel)]="option.text" name="optionText">
+                                    <input matInput type="text" [(ngModel)]="option.text" name="optionText" (change)="option.state = option.state || 1">
                                 </mat-form-field>
-                                <mat-checkbox [(ngModel)]="option.correct" name="multiple">Correct</mat-checkbox>
+                                <mat-checkbox [(ngModel)]="option.correct" name="multiple" (change)="option.state = option.state || 1">Correct</mat-checkbox>
                             </form>
                         </mat-expansion-panel>
                     </ng-container>

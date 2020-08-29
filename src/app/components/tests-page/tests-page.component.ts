@@ -33,6 +33,32 @@ export class TestsPageComponent implements OnInit {
     }
   }
 
+  public get isAdmin() : boolean {
+    return this.authService.userValue?.role == 'Admin';
+  }
+
+  clearAttempts() {
+    if (!this.isAdmin) {
+      return;
+    }
+
+    let f = confirm('Are you sure to clear your attempts?');
+    if (!f) {
+      return;
+    }
+
+    let userId = this.authService.userValue.id;
+    this.completionService.clearUser(userId).subscribe(
+      data => {
+        this.attempts = data;
+        alert('Your attempts have been cleared successfully');
+      },
+      error => {
+        alert('Failed to clear your attempts');
+      }
+    )
+  }
+
   openTest(id: number) : void {
     let test = this.tests.find(t => t.id == id);
     if (!test.questions || test.questions.length == 0) {
@@ -60,7 +86,7 @@ export class TestsPageComponent implements OnInit {
         test.questions.forEach(q => testTotal += q.points);
         let percent = Math.round(bestAttempt.points / testTotal * 100);
 
-        alert(`You have no tries left.\n Your best score: ${bestAttempt.points}/${testTotal} (${percent}%)`);
+        alert(`You have no tries left.\nYour best score: ${bestAttempt.points}/${testTotal} (${percent}%)`);
         return;
       }
     }

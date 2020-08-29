@@ -1,12 +1,11 @@
 #wrapper {
-    background: rgb(250, 250, 250);
-    min-width: 720px;
+    min-width: 600px;
 }
 
 header h1 {
     font-size: 29pt;
     font-weight: bolder;
-    padding: 60px 50px;
+    padding: 50px;
 }
 
 header a {
@@ -18,7 +17,10 @@ header, footer {
 }
 
 footer {
-    min-height: 100px;
+    min-height: 75px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
     
     display: flex;
     align-items: center;
@@ -36,8 +38,7 @@ nav {
 }
 
 main {
-    padding: 30px 10%; 
-    min-height: 700px;
+    padding: 30px 10%;
 }
 
 header nav ul {

@@ -1,0 +1,14 @@
+p {
+    font-size: 13pt;
+    word-spacing: 1px;
+}
+
+a {
+    color: rgb(44, 92, 197);
+}
+
+h1 {
+    font-size: 20pt;
+    font-weight: bold;
+    margin-top: 10px;
+}

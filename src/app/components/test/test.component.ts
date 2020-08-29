@@ -55,7 +55,7 @@ export class TestComponent implements OnInit {
       }
     });
 
-    let attempt = new Attempt(earnedPoints, new Date(), this.testModel.id, this.authService.userValue.id);
+    let attempt = new Attempt(earnedPoints, totalPoints, new Date(), this.testModel.id, this.authService.userValue.id);
     this.completionService.create(attempt).subscribe(
       data => {
         let percent = Math.round(earnedPoints / totalPoints * 100);
@@ -63,7 +63,7 @@ export class TestComponent implements OnInit {
         this.router.navigate(['/tests']);
       },
       error => {
-        alert('Failed to finish the test. PLease, try again later.');
+        alert('Failed to finish the test. Please, try again later.');
       }
     )
   }

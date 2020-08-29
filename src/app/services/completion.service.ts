@@ -14,11 +14,15 @@ export class CompletionService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(userId: string) : Observable<Attempt[]> {
+  getAll(userId: string): Observable<Attempt[]> {
     return this.http.get<Attempt[]>(`${this.url}/${userId}`);
   }
 
-  create(attempt: Attempt) : Observable<Attempt> {
+  create(attempt: Attempt): Observable<Attempt> {
     return this.http.post<Attempt>(this.url, attempt);
+  }
+
+  clearUser(userId: string): Observable<Attempt[]> {
+    return this.http.delete<Attempt[]>(`${this.url}/${userId}`);
   }
 }
