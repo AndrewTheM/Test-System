@@ -5,8 +5,11 @@
 }
 
 #btn-block {
-    align-self: flex-start;
     margin: 10px 80px;
+}
+
+button.control-btn {
+    background: rgb(50, 56, 146);
 }
 
 mat-expansion-panel {
@@ -18,11 +21,11 @@ button {
 }
 
 .test-panel, .answer-panel {
-    background: rgb(35, 29, 99);
+    background: rgb(40, 40, 44);
 }
 
 .question-panel {
-    background: rgb(14, 9, 82);
+    background: rgb(27, 27, 27);
 }
 
 mat-expansion-panel-header {

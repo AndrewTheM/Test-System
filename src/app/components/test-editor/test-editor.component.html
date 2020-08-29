@@ -1,17 +1,17 @@
 <div id="form-frame">
     <mat-spinner *ngIf="!tests"></mat-spinner>
     <div id="btn-block">
-        <button id="add-btn" mat-raised-button color="primary" *ngIf="tests" (click)="addTest()" [disabled]="editingNew">
+        <button id="add-btn" class="control-btn" mat-raised-button *ngIf="tests" (click)="addTest()" [disabled]="editingNew">
             <mat-icon>add</mat-icon>
         </button>
-        <button id="reload-btn" mat-raised-button color="primary" *ngIf="tests" (click)="reload(true)">
+        <button id="reload-btn" class="control-btn" mat-raised-button *ngIf="tests" (click)="reload(true)">
             <mat-icon>replay</mat-icon>
         </button>
     </div>
     <ng-container *ngFor="let test of tests">
         <mat-expansion-panel class="no-select test-panel">
             <mat-expansion-panel-header>[ {{ test.id || '?' }} ] - {{ test.name }}</mat-expansion-panel-header>
-            <button mat-raised-button color="primary" (click)="addQuestion(test)">Add Question</button>
+            <button mat-raised-button class="control-btn" (click)="addQuestion(test)">Add Question</button>
             <button mat-raised-button color="accent" (click)="saveTest(test)">Save Changes</button>
             <button mat-raised-button color="warn" (click)="deleteTest(test)">Delete</button>
             <form>
@@ -34,7 +34,7 @@
             </form>
             <ng-container *ngFor="let question of test.questions">
                 <mat-expansion-panel *ngIf="question.state != -1" class="question-panel">
-                    <button mat-raised-button color="primary" (click)="addOption(question)">Add Answer</button>
+                    <button mat-raised-button class="control-btn" (click)="addOption(question)">Add Answer</button>
                     <button mat-raised-button color="warn" (click)="deleteQuestion(test, question)">Delete</button>
                     <mat-expansion-panel-header>{{ question.text }} ({{ question.points }} points)</mat-expansion-panel-header>
                     <form>

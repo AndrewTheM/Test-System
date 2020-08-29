@@ -1,20 +1,24 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { User } from '../models'
+import { User, Auth } from '../models'
 import { environment } from 'src/environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  private readonly url: string = `${environment.apiURL}/auth`;
+
   constructor(private http: HttpClient) { }
 
-  getAll() {
-    return this.http.get<User[]>(`${environment.apiURL}/users`);
+  put(user: User) : Observable<User> {
+    return this.http.put<User>(`${this.url}/user`, user);
   }
 
-  getById(id: number) {
-    return this.http.get<User[]>(`${environment.apiURL}/users/${id}`);
+  changePassword(user: User, password: string) : Observable<Auth> {
+    return this.http.post<Auth>(`${this.url}/password`, { username: user.username, password });
   }
 }

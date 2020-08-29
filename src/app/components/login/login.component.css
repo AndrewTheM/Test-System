@@ -31,7 +31,7 @@ mat-card {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: rgba(10, 19, 78, 0.9);
+    background: rgb(40, 40, 44);
 }
 
 #form-frame {

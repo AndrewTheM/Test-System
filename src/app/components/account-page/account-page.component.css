@@ -1,0 +1,64 @@
+h1 {
+    font-size: 20pt;
+    margin-top: 10px;
+    color: rgb(40, 40, 44);
+}
+
+button {
+    margin: 5px 0;
+    padding: 2px 15px;
+    font-size: 13pt;
+    background: rgb(50, 56, 146);
+}
+
+#logout-btn {
+    margin-top: 30px;
+}
+
+#card-wrapper {
+    display: flex;
+}
+
+mat-card {
+    margin-right: 30px;
+    padding: 30px 20px 20px;
+    background: rgb(40, 40, 44);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#user-card {
+    width: 680px;
+}
+
+#user-card button {
+    width: 200px;
+}
+
+#password-card {
+    width: 350px;
+}
+
+#password-card button {
+    width: 300px;
+}
+
+form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+mat-form-field {
+    display: block;
+    font-size: 11.5pt;
+    width: 300px;
+    margin: 0 20px;
+}
+
+mat-form-field mat-icon {
+    cursor: pointer;
+}

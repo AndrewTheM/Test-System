@@ -1,5 +1,5 @@
 <div id="admin-panel">
-    <button mat-raised-button color="primary" *ngIf="tests && isAdmin" (click)="clearAttempts()">Clear Attempts</button>
+    <button mat-raised-button *ngIf="tests && isAdmin" (click)="clearAttempts()">Clear Attempts</button>
 </div>
 <div id="tests-wrapper">
     <mat-spinner *ngIf="!tests"></mat-spinner>

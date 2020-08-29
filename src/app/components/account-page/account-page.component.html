@@ -1,1 +1,74 @@
-<button mat-raised-button (click)="logout()">Logout</button>
+<h1><strong>Personal Information</strong></h1>
+<div id="card-wrapper">
+    <mat-card id="user-card">
+        <form [formGroup]="userDataForm" (ngSubmit)="updateUser()">
+            <div class="field-set">
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Username</mat-label> 
+                    <input matInput type="text" formControlName="username" maxlength="64" [(ngModel)]="user.username">
+                    <mat-error *ngIf="f.username.hasError('required')">
+                        Username is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="f.username.hasError('minlength')">
+                        Username has to be at least <strong>4 characters</strong> long
+                    </mat-error>
+                    <mat-error *ngIf="f.username.hasError('maxlength')">
+                        Username cannot be longer than <strong>32 characters</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Email</mat-label> 
+                    <input matInput type="email" formControlName="email" maxlength="64" [(ngModel)]="user.email">
+                    <mat-error *ngIf="f.email.hasError('email')">
+                        Entered email is <strong>invalid</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="field-set">
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>First Name</mat-label> 
+                    <input matInput type="text" formControlName="firstName" maxlength="64" [(ngModel)]="user.firstName">
+                    <mat-error *ngIf="f.firstName.hasError('required')">
+                        First name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Last Name</mat-label> 
+                    <input matInput type="text" formControlName="lastName" maxlength="64" [(ngModel)]="user.lastName">
+                    <mat-error *ngIf="f.lastName.hasError('required')">
+                        Last name is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <button mat-raised-button>Update Info</button>
+        </form>
+    </mat-card>
+    <mat-card id="password-card">
+        <form [formGroup]="passwordForm" (ngSubmit)="changePassword(p.password.value)">
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>New Password</mat-label>
+                    <input matInput type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" maxlength="64" (input)="onPasswordInput()">
+                    <mat-icon class="no-select" (click)="hidePassword = !hidePassword" matSuffix>{{ hidePassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <mat-error *ngIf="p.password.hasError('required')">
+                        Password is <strong>required</strong>
+                    </mat-error>
+                    <mat-error *ngIf="p.password.hasError('minlength')">
+                        Password has to be at least <strong>6 characters</strong> long
+                    </mat-error>
+                    <mat-error *ngIf="p.password.hasError('maxlength')">
+                        Password cannot be longer than <strong>16 characters</strong>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" color="accent">
+                    <mat-label>Confirm Password</mat-label> 
+                    <input matInput type="{{ hideConfirm ? 'password' : 'text' }}" formControlName="confirm" maxlength="64" (input)="onPasswordInput()">
+                    <mat-icon class="no-select" (click)="hideConfirm = !hideConfirm" matSuffix>{{ hideConfirm ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <mat-error *ngIf="passwordForm.get('confirm').invalid">
+                        Passwords do not match
+                    </mat-error>
+                </mat-form-field>
+            <button mat-raised-button [disabled]="passwordForm.invalid">Change Password</button>
+        </form>
+    </mat-card>
+</div>
+<button id="logout-btn" mat-raised-button (click)="logout()">Log Out</button>
