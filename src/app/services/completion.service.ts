@@ -10,7 +10,7 @@ import { environment } from '@environments/environment';
 })
 export class CompletionService {
 
-  private readonly url : string = `${environment.apiURL}/attempts`;
+  private readonly url: string = `${environment.apiURL}/attempts`;
 
   constructor(private http: HttpClient) { }
 
