@@ -65,7 +65,7 @@ export class TestEditorComponent implements OnInit {
     let request = (test.id) ? this.testService.update(test) : this.testService.create(test);
     request.subscribe(
       data => {
-        this.reload()
+        this.reload();
       },
       error => {
         alert('Failed to save changes to this test');
